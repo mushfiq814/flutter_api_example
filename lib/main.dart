@@ -60,9 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() => isLoading = true);
     // get Posts
     posts = await getPosts();
-    print(await createPost());
     // hide Loading Screen
     setState(() => isLoading = false);
+    
+    // create Post
+    // print(await createPost());
   }
 
   @override

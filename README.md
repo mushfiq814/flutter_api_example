@@ -1,16 +1,53 @@
-# api_example
+# Flutter API Example File
 
-A new Flutter project.
+This is an example file to remind me how to use APIs with flutter and dart.
 
-## Getting Started
+All code is located in `/lib`
 
-This project is a starting point for a Flutter application.
+# Notes
 
-A few resources to get you started if this is your first Flutter project:
+## Structure
+* `main.dart` has the main layout page
+* `/lib/utils/class_post.dart` contains the Post class
+* `/lib/utils/api_get.dart` contains the get method sample to get 100 posts from [JSON Placeholder](https://jsonplaceholder.typicode.com/posts)
+* `/lib/utils/api_post.dart` contains the post method sample to create a post in [JSON Placeholder](https://jsonplaceholder.typicode.com/posts)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Points of Interest
+
+* Decoding JSON response
+```dart
+// use dart:convert to decode JSON
+dynamic decodedJson = json.decode(responseBody);
+```
+
+* Converting http response array: 
+```dart
+// use this when the response contains an array
+List resList = (decodedJson as List)
+  // map each element of the array/list to a new Post object as defined in class_post.dart
+  .map((item) => new Post.getfromJson(item))
+  // convert the json to a list
+  .toList();
+```
+
+## Packages Used
+
+[HTTP](https://pub.dev/packages/http), [Convert](https://api.dartlang.org/stable/2.4.0/dart-convert/dart-convert-library.html), [Async](https://api.dartlang.org/stable/2.4.0/dart-async/dart-async-library.html), [IO](https://api.dartlang.org/stable/2.4.0/dart-io/dart-io-library.html)
+
+```dart
+import 'package:http/http.dart' as http; // for making HTTP calls
+import 'dart:convert'; // for converting JSON
+import 'dart:async'; // for async/await
+import 'dart:io'; // for http headers
+```
+
+Note: For external packages like http, the package name needs to be added to `pubspec.yaml` in the `dependencies` or `dev_dependencies` section:
+
+```yaml
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  http: ^0.12.0+2
+```
