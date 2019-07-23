@@ -1,7 +1,6 @@
 import 'package:http/http.dart' as http; // for making HTTP calls
 import 'dart:convert'; // for converting JSON
 import 'dart:async'; // for async/await
-import 'dart:io'; // for http headers
 
 // the Post class
 import './class_post.dart';

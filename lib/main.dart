@@ -1,4 +1,3 @@
-import 'package:api_example/utils/api_post.dart';
 /**
  *    __ _       _   _                 _    ____ ___   ____                       
  *   / _| |_   _| |_| |_ ___ _ __     / \  |  _ \_ _| |  _ \  ___ _ __ ___   ___  
@@ -39,7 +38,6 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
 
 class _MyHomePageState extends State<MyHomePage> {
 
@@ -85,7 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // this is a function to build each item on the list
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: Text(posts[index].title),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 10.0,
+                vertical: 10.0
+              ),
+              title: Text(posts[index].title, style: TextStyle(fontSize: 20),),
               subtitle: Text(posts[index].body)
             );
           },
